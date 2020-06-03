@@ -66,7 +66,7 @@ ReactDOM.render(
     <CssBaseline />
     <Router>
       <AppStateProvider>
-            <VideoApp />
+        <VideoApp />
       </AppStateProvider>
     </Router>
   </MuiThemeProvider>,

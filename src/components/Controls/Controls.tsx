@@ -6,6 +6,7 @@ import EndCallButton from './EndCallButton/EndCallButton';
 import ToggleAudioButton from './ToggleAudioButton/ToggleAudioButton';
 import ToggleVideoButton from './ToggleVideoButton/ToggleVideoButton';
 import ToggleScreenShareButton from './ToogleScreenShareButton/ToggleScreenShareButton';
+import DeviceSelector from './DeviceSelector/DeviceSelector';
 
 import useIsUserActive from './useIsUserActive/useIsUserActive';
 import useRoomState from '../../hooks/useRoomState/useRoomState';
@@ -47,6 +48,7 @@ export default function Controls() {
     <div className={clsx(classes.container, { showControls })}>
       <ToggleAudioButton disabled={isReconnecting} />
       <ToggleVideoButton disabled={isReconnecting} />
+      <DeviceSelector />
       {roomState !== 'disconnected' && (
         <>
           <ToggleScreenShareButton disabled={isReconnecting} />

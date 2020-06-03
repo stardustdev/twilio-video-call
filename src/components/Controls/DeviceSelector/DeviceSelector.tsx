@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import AudioInputList from './AudioInputList/AudioInputList';
 import AudioOutputList from './AudioOutputList/AudioOutputList';
-import { Dialog, IconButton, DialogContent, Button, Theme } from '@material-ui/core';
+import { Dialog, Fab, DialogContent, Button, Theme } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 import VideoInputList from './VideoInputList/VideoInputList';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
@@ -29,18 +29,25 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: '16px',
       },
     },
+    fab: {
+      margin: theme.spacing(1),
+      '&[disabled]': {
+        color: 'rgba(225, 225, 225, 0.8)',
+        backgroundColor: 'rgba(175, 175, 175, 0.6);',
+      },
+    },
   })
 );
 
-export function DeviceSelector() {
+export default function DeviceSelector() {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <IconButton onClick={() => setIsOpen(true)} data-cy-device-select>
+      <Fab className={classes.fab} onClick={() => setIsOpen(true)} data-cy-device-select>
         <SettingsIcon />
-      </IconButton>
+      </Fab>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} classes={{ paper: classes.paper }}>
         <DialogContent className={classes.container}>
           <div className={classes.listSection}>

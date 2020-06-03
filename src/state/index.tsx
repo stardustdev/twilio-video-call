@@ -7,8 +7,6 @@ export interface StateContextType {
   setError(error: TwilioError | null): void;
   getToken(name: string, room: string): Promise<string>;
   user?: User | null | { displayName: undefined; photoURL: undefined; passcode?: string };
-  signIn?(passcode?: string): Promise<void>;
-  signOut?(): Promise<void>;
   isAuthReady?: boolean;
   activeSinkId: string;
   setActiveSinkId(sinkId: string): void;
@@ -36,16 +34,16 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     setActiveSinkId,
   } as StateContextType;
 
-    contextValue = {
-      ...contextValue,
-      getToken: async (identity, roomName) => {
-        const headers = new window.Headers();
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
-        const params = new window.URLSearchParams({ identity, roomName });
+  contextValue = {
+    ...contextValue,
+    getToken: async (identity, roomName) => {
+      const headers = new window.Headers();
+      const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+      const params = new window.URLSearchParams({ identity, roomName });
 
-        return fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());
-      }
-  }
+      return fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());
+    },
+  };
 
   const getToken: StateContextType['getToken'] = (name, room) => {
     return contextValue
