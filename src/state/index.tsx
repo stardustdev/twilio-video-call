@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useState } from 'react';
 import { TwilioError } from 'twilio-video';
-import { User } from 'firebase';
 
 export interface StateContextType {
   error: TwilioError | null;
   setError(error: TwilioError | null): void;
   getToken(name: string, room: string): Promise<string>;
-  user?: User | null | { displayName: undefined; photoURL: undefined; passcode?: string };
+  user?: { displayName: undefined; photoURL: undefined; passcode?: string } | null;
   isAuthReady?: boolean;
   activeSinkId: string;
   setActiveSinkId(sinkId: string): void;
