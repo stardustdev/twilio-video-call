@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     hideVideo: {
       background: 'black',
+      backgroundImage: `url(
+        'https://cosmic-s3.imgix.net/cdfcd5d0-856d-11ea-856b-416510aa3c93-katie.jpeg?w=500&auto=format")'
+      )`,
     },
     identity: {
       background: 'rgba(0, 0, 0, 0.7)',

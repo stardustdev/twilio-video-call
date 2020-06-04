@@ -36,7 +36,6 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
   contextValue = {
     ...contextValue,
     getToken: async (identity, roomName) => {
-      // const headers = new window.Headers();
       const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
       const params = new window.URLSearchParams({ identity, roomName });
 

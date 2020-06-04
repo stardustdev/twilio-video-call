@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import {AppBar, Button, CircularProgress, TextField ,Toolbar} from '@material-ui/core';
+import { AppBar, Button, CircularProgress, TextField, Toolbar } from '@material-ui/core';
 
 import { useAppState } from '../../state';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
@@ -72,33 +72,28 @@ export default function MenuBar() {
   return (
     <AppBar className={classes.container} position="static">
       <Toolbar className={classes.toolbar}>
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              id="menu-name"
-              label="Name"
-              className={classes.textField}
-              value={name}
-              onChange={handleNameChange}
-              margin="dense"
-            />
-            <TextField
-              id="menu-room"
-              label="Room"
-              className={classes.textField}
-              value={roomName}
-              onChange={handleRoomNameChange}
-              margin="dense"
-            />
-            <Button
-              className={classes.joinButton}
-              type="submit"
-              color="primary"
-              variant="contained"
-            >
-              Join Room
-            </Button>
-            {(isConnecting) && <CircularProgress className={classes.loadingSpinner} />}
-          </form>
+        <form className={classes.form} onSubmit={handleSubmit}>
+          <TextField
+            id="menu-name"
+            label="Name"
+            className={classes.textField}
+            value={name}
+            onChange={handleNameChange}
+            margin="dense"
+          />
+          <TextField
+            id="menu-room"
+            label="Room"
+            className={classes.textField}
+            value={roomName}
+            onChange={handleRoomNameChange}
+            margin="dense"
+          />
+          <Button className={classes.joinButton} type="submit" color="primary" variant="contained">
+            Join Room
+          </Button>
+          {isConnecting && <CircularProgress className={classes.loadingSpinner} />}
+        </form>
       </Toolbar>
     </AppBar>
   );
